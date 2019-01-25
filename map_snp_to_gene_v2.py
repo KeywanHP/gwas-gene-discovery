@@ -10,7 +10,7 @@ import math, os
 
 def findCloseGene(chr_snp, bp_snp):
 	#input file - contains gene id and position [id,chr,beg,end]
-	gene_file = 'H:\\workspace_python\\MAGIC\\ARALIP_genes.txt'
+	gene_file = 'ARALIP_genes.txt'
 	score_threshold = 1.0
 	max_distance = 1000
 	with open(gene_file) as f:

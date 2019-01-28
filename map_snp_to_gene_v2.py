@@ -5,6 +5,7 @@ Amended on 28 Jan 2015
 @author: citrolius, keywan hassani-pak
 
 Format GWAS file to include both p-value and logP-value
+Extract genes associated with SNPs of significance and show annotation.
 
 '''
 
@@ -154,6 +155,7 @@ def getgdp(threshfile, gdp, genedesign):
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
     location="T:/colin/BRice/gwas-gene-discovery/"
+    #edit the line above after the script has been moved.
     res="{}GAPIT.MLM.DTF.GWAS.Results.csv".format(location)
     filter="{}GAPIT.MLM.DTF.GWAS.Results_filtered.txt".format(location)
     print("taking inputs from:{}".format(res))

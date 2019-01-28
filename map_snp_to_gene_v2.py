@@ -2,7 +2,7 @@
 Created on 5 May 2015
 Amended on 28 Jan 2015
 
-@author: citrolius, keywan hassani-pak
+@author: colin li, keywan hassani-pak
 
 Format GWAS file to include both p-value and logP-value
 

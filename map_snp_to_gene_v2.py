@@ -13,7 +13,7 @@ Extract genes associated with SNPs of significance and show annotation.
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback
+import os, math, traceback, datetime
 
 def resformat(res, filter):
     with open(res) as fres:
@@ -155,7 +155,6 @@ def getgdp(threshfile, gdp, genedesign):
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
     location="T:/colin/BRice/gwas-gene-discovery/"
-    #edit the line above after the script has been moved.
     res="{}GAPIT.MLM.DTF.GWAS.Results.csv".format(location)
     filter="{}GAPIT.MLM.DTF.GWAS.Results_filtered.txt".format(location)
     print("taking inputs from:{}".format(res))
@@ -193,3 +192,4 @@ if __name__=="__main__":
         traceback.print_exc()
 
 print("The entire pipeline completed without errors")
+print(datetime.datetime.now())

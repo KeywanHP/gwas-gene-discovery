@@ -9,6 +9,7 @@ Format GWAS file to include both p-value and logP-value
 
 import os, math
 
+
 for file in os.listdir("."):
     if file.endswith(".logP.txt"):
         print(file)

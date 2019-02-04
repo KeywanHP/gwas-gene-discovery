@@ -1,20 +1,8 @@
-'''
-Created on 5 May 2015
-Amended on 28 Jan 2015
-
-@author: citrolius, keywan hassani-pak
-
-Format GWAS file to include both p-value and logP-value
-Extract genes associated with SNPs of significance and show annotation.
-
-'''
-
 #!/usr/bin/python
 
 #bring python3 print() into python2
 from __future__ import print_function
 import os, math, traceback, datetime
-from os import *
 
 def resformat(res, filter):
     with open(res) as fres:
@@ -155,9 +143,8 @@ def getgdp(threshfile, gdp, genedesign):
 
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
-    location="T:/colin/BRice/gwas-gene-discovery/"
-    res="{}GAPIT.MLM.DTF.GWAS.Results.csv".format(location)
-    filter="{}GAPIT.MLM.DTF.GWAS.Results_filtered.txt".format(location)
+    res="T:/colin/BRice/gwas-gene-discovery/GAPIT.MLM.DTF.GWAS.Results.csv"
+    filter="T:/colin/BRice/gwas-gene-discovery/GAPIT.MLM.DTF.GWAS.Results_filtered.txt"
     print("taking inputs from:{}".format(res))
     print("writing outputs to:{}".format(filter))      
     try:
@@ -167,7 +154,7 @@ if __name__=="__main__":
         traceback.print_exc()
 
     #2) Obtain SNPs less than e-6 in p-value
-    threshfile="{}Results_filtered_threshold.txt".format(location)
+    threshfile="T:/colin/BRice/gwas-gene-discovery/Results_filtered_threshold.txt"
     print("reading from: {}".format(filter))
     print("extracting SNPS above threshold into: {}".format(threshfile))
     try:
@@ -178,12 +165,12 @@ if __name__=="__main__":
 
     
     #3) define annotation file for findCloseGenes(genes) and findCloseGeneDesign(annotation)
-    annotation="{}Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt".format(location)
+    annotation="T:/colin/BRice/gwas-gene-discovery/Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
 
     
     #4) Obtain a file summarising the information.
-    gdp="{}Results_filtered_gdp_FINAL.txt".format(location)
-    genedesign="{}Results_formated_gene_and_designation.txt".format(location)
+    gdp="T:/colin/BRice/gwas-gene-discovery/Results_filtered_gdp_FINAL.txt"
+    genedesign="T:/colin/BRice/gwas-gene-discovery/Results_formated_gene_and_designation.txt"
     print("producing summary of genes associated with significant SNPs")
     print("producing a file of genes associated with significant SNPs and annotations")
     try:

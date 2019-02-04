@@ -14,6 +14,7 @@ Extract genes associated with SNPs of significance and show annotation.
 #bring python3 print() into python2
 from __future__ import print_function
 import os, math, traceback, datetime
+from os import *
 
 def resformat(res, filter):
     with open(res) as fres:

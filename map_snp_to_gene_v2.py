@@ -143,8 +143,8 @@ def getgdp(threshfile, gdp, genedesign):
 
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
-    res="T:/colin/BRice/gwas-gene-discovery/GAPIT.MLM.DTF.GWAS.Results.csv"
-    filter="T:/colin/BRice/gwas-gene-discovery/GAPIT.MLM.DTF.GWAS.Results_filtered.txt"
+    res="GAPIT.MLM.DTF.GWAS.Results.csv"
+    filter="GAPIT.MLM.DTF.GWAS.Results_filtered.txt"
     print("taking inputs from:{}".format(res))
     print("writing outputs to:{}".format(filter))      
     try:
@@ -154,7 +154,7 @@ if __name__=="__main__":
         traceback.print_exc()
 
     #2) Obtain SNPs less than e-6 in p-value
-    threshfile="T:/colin/BRice/gwas-gene-discovery/Results_filtered_threshold.txt"
+    threshfile="Results_filtered_threshold.txt"
     print("reading from: {}".format(filter))
     print("extracting SNPS above threshold into: {}".format(threshfile))
     try:
@@ -165,12 +165,12 @@ if __name__=="__main__":
 
     
     #3) define annotation file for findCloseGenes(genes) and findCloseGeneDesign(annotation)
-    annotation="T:/colin/BRice/gwas-gene-discovery/Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
+    annotation="Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
 
     
     #4) Obtain a file summarising the information.
-    gdp="T:/colin/BRice/gwas-gene-discovery/Results_filtered_gdp_FINAL.txt"
-    genedesign="T:/colin/BRice/gwas-gene-discovery/Results_formated_gene_and_designation.txt"
+    gdp="Results_filtered_gdp_FINAL.txt"
+    genedesign="Results_formated_gene_and_designation.txt"
     print("producing summary of genes associated with significant SNPs")
     print("producing a file of genes associated with significant SNPs and annotations")
     try:

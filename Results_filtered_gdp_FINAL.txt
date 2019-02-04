@@ -1,15 +1,15 @@
 GENE	CHR	SNPnum	snpBP	P	logP	designation.txt
-Os03g0122600	3	1	1278045	8.74e-09	8.058488567365597	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os03g0122600	3	2	1283193	2.14e-08	7.669586226650809	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os03g0122600	3	3	1275151	2.98e-08	7.525783735923745	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os03g0122600	3	4	1286390	4.79e-08	7.319664486585437	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os03g0122600	3	5	1300254	5.04e-08	7.297569463554475	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os06g0164900	6	6	3287871	5.29e-08	7.276544327964814	Os06g0164900 :: Similar to OSIGBa0147J19.7 protein. (Os06t0164900-00)
-Os03g0122600	3	7	1272815	7.36e-08	7.133122185662502	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
-Os06g0166100	6	8	3326064	1.02e-07	6.991399828238082	Os06g0166100 :: FAR1 domain containing protein. (Os06t0166100-01)
+Os03g0122600	3	1	1278045	8.74e-09	8.05848856737	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os03g0122600	3	2	1283193	2.14e-08	7.66958622665	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os03g0122600	3	3	1275151	2.98e-08	7.52578373592	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os03g0122600	3	4	1286390	4.79e-08	7.31966448659	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os03g0122600	3	5	1300254	5.04e-08	7.29756946355	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os06g0164900	6	6	3287871	5.29e-08	7.27654432796	Os06g0164900 :: Similar to OSIGBa0147J19.7 protein. (Os06t0164900-00)
+Os03g0122600	3	7	1272815	7.36e-08	7.13312218566	Os03g0122600 :: MIKC-type MADS-box protein%2C Flowering activator%2C Short-day/long-day promotion of flowering (Os03t0122600-01)%3BTranscription factor%2C MADS-box domain containing protein. (Os03t0122600-02)
+Os06g0166100	6	8	3326064	1.02e-07	6.99139982824	Os06g0166100 :: FAR1 domain containing protein. (Os06t0166100-01)
 -	-	-	-	-	-
 -	-	-	-	-	-
-Os06g0156700	6	11	2898059	3.07e-07	6.512861624522814	Os06g0156700 :: Lipase%2C GDSL domain containing protein. (Os06t0156700-01)
+Os06g0156700	6	11	2898059	3.07e-07	6.51286162452	Os06g0156700 :: Lipase%2C GDSL domain containing protein. (Os06t0156700-01)
 -	-	-	-	-	-
-Os06g0156600	6	13	2894959	6.85e-07	6.164309428507575	Os06g0156600 :: Lipase%2C GDSL domain containing protein. (Os06t0156600-01)
+Os06g0156600	6	13	2894959	6.85e-07	6.16430942851	Os06g0156600 :: Lipase%2C GDSL domain containing protein. (Os06t0156600-01)
 -	-	-	-	-	-

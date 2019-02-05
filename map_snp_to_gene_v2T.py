@@ -107,7 +107,7 @@ def getgdp(threshfile, gdp, genedesign):
     with open(threshfile) as fthresh:
         next(fthresh)
         with open(gdp, "w") as fgdp:
-            print("GENE\tCHR\tSNPnum\tsnpBP\tP\tlogP\tdesignation.txt", file=fgdp)
+            print("GENE\tCHR\tSNPnum\tsnpBP\tP\tlogP\tdesignation", file=fgdp)
             highlight = []
             highlightdesign = []
             for line in fthresh:

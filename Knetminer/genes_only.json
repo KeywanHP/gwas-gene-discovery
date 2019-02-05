@@ -1,0 +1,94 @@
+{"geneTable":"ONDEX-ID	ACCESSION	GENE NAME	CHRO	START	TAXID	SCORE	USER	QTL	EVIDENCE	EVIDENCES_LINKED	EVIDENCES_IDs
+42100	OS02G0543000	ASR3	2	20165664	39947	1.69	yes	qtaro_109//qtaro_109||qtaro_131//qtaro_131||qtaro_261//qtaro_261||qtaro_586//qtaro_586||qtaro_375//qtaro_375	ProtDomain//PF02496||Phenotype//Cold and drought tolerance.||MolFunc//zinc binding//protein homodimerization acti...||BioProc//response to stress//response to thirst||CelComp//protoplasm//nucleus//protein complex||Publication//PMID:8278555//PMID:23620302//PMID:20454772//PMID:7846175//PMID:16822623||TO//submergence sensitivity||Protein//OS02T0543000-04//Q08655//OS02T0543000-05//P37219//OS02T0543000-03//OS02T0543000-01//OS02T0543000-02//P37220	23	422406,360612,27617,363207,360998,247616,444770,27620,441248,416736,186315,111883,437324,405773,27660,229391,381418,27640,432799,424252,420989,374232,358010
+50713	OS04G0464200	BADH1	4	23171516	39947	0.43	yes	qtaro_446//qtaro_446||qtaro_1004//qtaro_1004||qtaro_460//qtaro_460||qtaro_812//qtaro_812||qtaro_81//qtaro_81||qtaro_655//qtaro_655||qtaro_917//qtaro_917||qtaro_811//qtaro_811||qtaro_57//qtaro_57	Path//glycine betaine biosynthesis ...//putrescine degradation IV||Enzyme//3-chloroallyl aldehyde dehydr...//3-aminopropanal dehydrogenase//aminobutyraldehyde dehydrogen...//4-aminobutyraldehyde dehydrog...//betaine-aldehyde dehydrogenase//betaine aldehyde dehydrogenase||Publication//PMID:18704694//PMID:16297073//PMID:2320587//PMID:21166475//PMID:18840300//PMID:16608866//PMID:18599581//PMID:9193078//PMID:15358267//PMID:15333753//PMID:14701923//PMID:25150410//PMID:18089549//PMID:22534193//PMID:19706531//PMID:7888620//PMID:19371779//PMID:21053011//PMID:15941401//PMID:10202815//PMID:26258482//PMID:9751804//PMID:17129318//PMID:1731961//PMID:16287169//PMID:15908439//PMID:18491070//PMID:24130194//PMID:19850038//PMID:17951448//PMID:24280374||Reaction//AMINOBUTDEHYDROG-RXN//RXN-12332//BADH-RXN||Protein//AT1G74920.1//B9F3B6//P28237//AT3G48170.1//Q9S795//O04895////Q9ZPB7//Q9STS1//P17202//Q40024//P42757//Q84LK3//B3VMC0////OS04T0464200-01//O24174||ProtDomain//PF00815//PF00171//PF00171//PF00171//PF00171||Phenotype//increase salinity tolerance, ...//increase drought tolerance//increase cold stress tolerance//grain weight||MolFunc//redox//succinyl semialdehyde dehydro...//succinate-semialdehyde:NAD(P)...//NAD binding//BADH//NAD-aldehyde dehydrogenase//aldehyde:NAD(P)+ oxidoreducta...//3-chloroallyl aldehyde dehydr...||CelComp//mitochondrial lumen//leucoplast//cell wall//mitochondria//cytoplasm//peroxisome//chloroplast//cytosol||BioProc//choline oxidation//GABA catabolism//response to abscisic acid//GABA shunt//oxidation reduction//cellular response to anoxia//response to thirst//salinity response//alkanal metabolism||SNP//ENSVATH00407266||Gene//ALDH10A8//ALDH10A9||TO//SALTTL//scent//submergence sensitivity//enzyme activity trait//stress trait//drought tolerance||Trait//avrB||EC//1.2.1.8//1.2.1.3//1.2.1.24	106	427779,389122,268814,118799,200467,395796,418832,410897,367890,381215,292383,363547,383780,360998,146214,390959,303919,415784,174128,237367,431920,432703,438076,438075,390971,360775,382541,397130,438088,431432,292938,428105,407127,426577,385628,129883,401245,148313,122463,372070,3172,357985,422754,151398,407150,417135,376169,351592,352360,386410,394870,429686,397170,402556,407675,241539,424077,411275,150412,163212,218002,437905,359835,360612,425895,360871,434336,407976,373930,447668,168368,430773,402878,244668,322747,360900,154055,281794,391375,357583,366537,395988,133847,294610,294620,291805,419549,365797,121314,158948,186852,203242,397551,403692,93930,301034,301035,300021,397815,36339,366067,435184,361981,320504,303608,300027
+","evidenceTable":"TYPE	NAME	SCORE	P-VALUE	GENES	USER GENES	QTLS	ONDEXID
+BioProc	response to stress	1.00	0.00786	141	OS02G0543000	137	422406
+MolFunc	redox	1.00	0.04240	774	OS04G0464200	743	427779
+MolFunc	zinc binding	1.00	0.13685	2639	OS02G0543000	2535	405773
+CelComp	mitochondrial lumen	1.00	0.01362	245	OS04G0464200	237	367890
+Reaction	AMINOBUTDEHYDROG-RXN	1.00	0.00011	2	OS04G0464200	2	292383
+TO	SALTTL	1.00	0.10477	1981	OS04G0464200	1895	363547
+TO	scent	1.00	0.01880	339	OS04G0464200	331	383780
+TO	submergence sensitivity	1.00	0.00705	3000	OS02G0543000,OS04G0464200	2863	360998
+Path	glycine betaine biosynthesis ...	1.00	0.00017	3	OS04G0464200	3	303919
+CelComp	leucoplast	1.00	0.00011	2	OS04G0464200	2	431920
+CelComp	cell wall	1.00	0.10377	1961	OS04G0464200	1878	432703
+Phenotype	increase salinity tolerance, ...	1.00	0.00006	1	OS04G0464200	1	438076
+Phenotype	increase drought tolerance	1.00	0.00006	1	OS04G0464200	1	438075
+BioProc	choline oxidation	1.00	0.00095	17	OS04G0464200	17	390971
+MolFunc	succinyl semialdehyde dehydro...	1.00	0.00090	16	OS04G0464200	16	360775
+Phenotype	Cold and drought tolerance.	1.00	0.00017	3	OS02G0543000	3	437324
+BioProc	GABA catabolism	1.00	0.00112	20	OS04G0464200	19	397130
+Phenotype	increase cold stress tolerance	1.00	0.00006	1	OS04G0464200	1	438088
+Reaction	RXN-12332	1.00	0.00011	2	OS04G0464200	2	292938
+CelComp	mitochondria	1.00	0.25064	5247	OS04G0464200	5031	428105
+EC	1.2.1.8	1.00	0.00090	16	OS04G0464200	16	407127
+ProtDomain	PF00815	1.00	0.00129	23	OS04G0464200	23	426577
+MolFunc	succinate-semialdehyde:NAD(P)...	1.00	0.00090	16	OS04G0464200	16	401245
+MolFunc	NAD binding	1.00	0.01053	189	OS04G0464200	180	372070
+MolFunc	BADH	1.00	0.00090	16	OS04G0464200	16	357985
+TO	enzyme activity trait	1.00	0.17017	3354	OS04G0464200	3208	351592
+BioProc	response to abscisic acid	1.00	0.15708	3069	OS04G0464200	2943	352360
+TO	stress trait	1.00	0.19220	3847	OS04G0464200	3687	386410
+CelComp	cytoplasm	1.00	0.36580	8607	OS04G0464200	8286	394870
+BioProc	GABA shunt	1.00	0.00112	20	OS04G0464200	19	429686
+CelComp	peroxisome	1.00	0.04304	786	OS04G0464200	746	402556
+CelComp	nucleus	1.00	0.44452	11910	OS02G0543000	11435	420989
+BioProc	oxidation reduction	1.00	0.13647	2631	OS04G0464200	2509	407675
+CelComp	protein complex	1.00	0.01556	280	OS02G0543000	270	358010
+BioProc	cellular response to anoxia	1.00	0.00118	21	OS04G0464200	21	411275
+Phenotype	grain weight	1.00	0.00011	2	OS04G0464200	2	437905
+CelComp	protoplasm	1.00	0.09238	1734	OS02G0543000	1669	432799
+BioProc	response to thirst	1.00	0.00264	1836	OS02G0543000,OS04G0464200	1770	360612
+MolFunc	NAD-aldehyde dehydrogenase	1.00	0.00101	18	OS04G0464200	18	425895
+ProtDomain	PF00171	1.00	0.00118	21	OS04G0464200	21	360871
+MolFunc	aldehyde:NAD(P)+ oxidoreducta...	1.00	0.00101	18	OS04G0464200	18	407976
+CelComp	chloroplast	1.00	0.32792	7382	OS04G0464200	7086	373930
+ProtDomain	PF00171	1.00	0.00062	11	OS04G0464200	11	430773
+SNP	ENSVATH00407266	1.00	0.00011	2	OS04G0464200	2	322747
+TO	drought tolerance	1.00	0.13417	2583	OS04G0464200	2475	360900
+ProtDomain	PF02496	1.00	0.00034	6	OS02G0543000	6	186315
+BioProc	salinity response	1.00	0.13932	2691	OS04G0464200	2575	357583
+ProtDomain	PF00171	1.00	0.00078	14	OS04G0464200	14	395988
+Enzyme	3-chloroallyl aldehyde dehydr...	1.00	0.00011	2	OS04G0464200	2	294610
+Enzyme	3-aminopropanal dehydrogenase	1.00	0.00011	2	OS04G0464200	2	294620
+Reaction	BADH-RXN	1.00	0.00011	2	OS04G0464200	2	291805
+ProtDomain	PF00171	1.00	0.00123	22	OS04G0464200	22	365797
+EC	1.2.1.3	1.00	0.00078	14	OS04G0464200	14	121314
+Gene	ALDH10A8	1.00	0.00011	2	OS04G0464200	2	158948
+MolFunc	3-chloroallyl aldehyde dehydr...	1.00	0.00145	26	OS04G0464200	26	397551
+Gene	ALDH10A9	1.00	0.00011	2	OS04G0464200	2	93930
+Enzyme	aminobutyraldehyde dehydrogen...	1.00	0.00011	2	OS04G0464200	2	301034
+MolFunc	protein homodimerization acti...	1.00	0.10228	1931	OS02G0543000	1854	381418
+Enzyme	4-aminobutyraldehyde dehydrog...	1.00	0.00011	2	OS04G0464200	2	301035
+Enzyme	betaine-aldehyde dehydrogenase	1.00	0.00011	2	OS04G0464200	2	300021
+CelComp	cytosol	1.00	0.29086	6309	OS04G0464200	6067	397815
+EC	1.2.1.24	1.00	0.00090	16	OS04G0464200	16	366067
+BioProc	alkanal metabolism	1.00	0.00101	18	OS04G0464200	18	435184
+Trait	avrB	1.00	0.09566	1799	OS04G0464200	1723	320504
+Path	putrescine degradation IV	1.00	0.00011	2	OS04G0464200	2	303608
+Enzyme	betaine aldehyde dehydrogenase	1.00	0.00011	2	OS04G0464200	2	300027
+","geneCount":2,"docSize":127,"totalDocSize":129,"gviewer":"<?xml version=\"1.0\" standalone=\"yes\"?>
+<genome>
+<feature id=\"0\">
+<chromosome>2</chromosome>
+<start>20165664</start>
+<end>20166649</end>
+<type>gene</type>
+<color>0x00FF00</color>
+<label>ASR3</label>
+<link>http://babvs67.rothamsted.ac.uk:8081/ws/rice/network?keyword=&amp;list=OS02G0543000</link>
+<score>1.694657583572242</score>
+</feature>
+<feature id=\"1\">
+<chromosome>4</chromosome>
+<start>23171516</start>
+<end>23176332</end>
+<type>gene</type>
+<color>0xFFA500</color>
+<label>BADH1</label>
+<link>http://babvs67.rothamsted.ac.uk:8081/ws/rice/network?keyword=&amp;list=OS04G0464200</link>
+<score>0.4308707960719447</score>
+</feature>
+</genome>
+"}

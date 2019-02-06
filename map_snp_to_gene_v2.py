@@ -2,12 +2,12 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback, datetime
+import os, math, traceback, datetime, glob
 
 def resformat(res, filter):
     with open(res) as fres:
         next(fres)
-        with open(filter, "w") as flt:
+        with file.open(filter, "w") as flt:
             snp = 0
             print("{}\t{}\t{}\t{}\t{}".format("SNPnum","CHR","snpBP","P","logP"), file=flt)
             for line in fres:
@@ -70,7 +70,7 @@ def findCloseGene(chr_snp, bp_snp):
                 return acc
         return "FooBar"
     f.close()
-#End of block3 to find the genes associated with snps.acc is column 0 which is genes.
+#End of block3 to find the genes associated with snps.
 
 
 def findCloseGeneDesign(chr_snp, bp_snp):
@@ -101,7 +101,7 @@ def findCloseGeneDesign(chr_snp, bp_snp):
                 return design
         return "FooBar2"
     f2.close()
-#End of block3.5 to find the annotation of the genes associated with snps. design is column4 which is genes::annotation.
+#End of block3.5 to find the annotation of the genes associated with snps.
 
 def getgdp(threshfile, gdp, genedesign):
     with open(threshfile) as fthresh:
@@ -143,7 +143,7 @@ def getgdp(threshfile, gdp, genedesign):
 
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
-    res=*".csv"
+    res=glob.glob("*.Results.csv")
     filter="GAPIT.MLM.DTF.GWAS.Results_filtered.txt"
     print("taking inputs from:{}".format(res))
     print("writing outputs to:{}".format(filter))      
@@ -165,7 +165,7 @@ if __name__=="__main__":
 
     
     #3) define annotation file for findCloseGenes(genes) and findCloseGeneDesign(annotation)
-    annotation="Os_Nipponbare_IRGSP_1_gene_Loci_and_designation"
+    annotation="Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
 
     
     #4) Obtain a file summarising the information.

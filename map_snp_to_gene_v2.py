@@ -144,7 +144,7 @@ def getgdp(threshfile, gdp, genedesign):
 if __name__=="__main__":
     #1) Truncate results file and order by snps.
     res=glob.glob("*.Results.csv")
-    filter="GAPIT.MLM.DTF.GWAS.Results_filtered.txt"
+    filter="Results_filtered.txt"
     print("taking inputs from:{}".format(res))
     print("writing outputs to:{}".format(filter))      
     try:

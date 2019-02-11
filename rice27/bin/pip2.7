@@ -1,5 +1,4 @@
-#!/home/data/bioinf_training/colin/BRice/gwas-gene-discovery/rice27/bin/python2.7
-
+#!/home/data/bioinf_training/colin/BRice/gwas-gene-discovery/rice27/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
@@ -7,5 +6,5 @@ import sys
 from pip._internal import main
 
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
     sys.exit(main())

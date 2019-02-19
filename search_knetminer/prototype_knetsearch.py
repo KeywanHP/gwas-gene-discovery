@@ -38,7 +38,7 @@ def parsejs():
                 with open("genetable.txt", "w") as g:
                     g.write(content[u'geneTable']) #for some reason the json keys have to have a u in front.
                 g.close()
-    jf.close()
+            jf.close()
     return
 
 def same_genes():

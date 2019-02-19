@@ -2,7 +2,7 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback, datetime, glob
+import os, math, traceback, datetime
 
 def resformat(filter):
     for file in os.listdir("."):

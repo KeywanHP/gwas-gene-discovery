@@ -1,3 +1,7 @@
+# folders
+.vs/*
+rice27/*
+
 # Compiled source #
 ###################
 *.com

@@ -179,6 +179,17 @@ def parsejs():
             jf.close()
     return
 
+def gene_score():
+    '''Extract the scores only.'''
+    with open("genetable.txt", "r") as f:
+        with open("scores.txt", "w") as sf:
+            for line in f:
+                col = line.split("\t")
+                score=str(col[6]) #why is there an index error here? Corrected when converted to str.
+                genes=col[1]
+                print("{}\t{}".format(genes, score), file=sf)
+        sf.close()
+    f.close()
 
 if __name__ == "__main__":
 
@@ -229,6 +240,13 @@ if __name__ == "__main__":
     try:
         parsejs()
         print("Extracting genetable from api with scores")
+    except Exception:
+        traceback.print_exc()
+
+    #7) Compare genetable with genetable and extract only genes + scores
+    try:
+        gene_score()
+        print("Extracting genes and score from Knetminer")
     except Exception:
         traceback.print_exc()
 

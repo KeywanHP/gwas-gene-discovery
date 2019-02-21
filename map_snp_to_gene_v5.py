@@ -182,12 +182,16 @@ def parsejs():
 def gene_score():
     '''Extract the scores only.'''
     with open("genetable.txt", "r") as f:
+        next(f)
         with open("scores.txt", "w") as sf:
             for line in f:
                 col = line.split("\t")
-                score=str(col[6]) #why is there an index error here? Corrected when converted to str.
+                score=str(col[6]) 
                 genes=col[1]
-                print("{}\t{}".format(genes, score), file=sf)
+                pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
+                keyw = "+OR+".join(pheno)
+                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genes)
+                print("{}\t{}\t{}".format(genes, score, url), file=sf)
         sf.close()
     f.close()
 

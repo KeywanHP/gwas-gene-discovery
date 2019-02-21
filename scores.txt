@@ -1,6 +1,5 @@
-ACCESSION	SCORE
-OS03G0122600	319.95
-OS06G0156700	12.62
-OS06G0156600	12.62
-OS06G0164900	8.90
-OS06G0166100	0.00
+OS03G0122600	319.95	http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword=coleoptile length+OR+mesocotyl length+OR+root length+OR+seminal root length+OR+Germination rate. Seedling growth.&list=OS03G0122600
+OS06G0156700	12.62	http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword=coleoptile length+OR+mesocotyl length+OR+root length+OR+seminal root length+OR+Germination rate. Seedling growth.&list=OS06G0156700
+OS06G0156600	12.62	http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword=coleoptile length+OR+mesocotyl length+OR+root length+OR+seminal root length+OR+Germination rate. Seedling growth.&list=OS06G0156600
+OS06G0164900	8.90	http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword=coleoptile length+OR+mesocotyl length+OR+root length+OR+seminal root length+OR+Germination rate. Seedling growth.&list=OS06G0164900
+OS06G0166100	0.00	http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword=coleoptile length+OR+mesocotyl length+OR+root length+OR+seminal root length+OR+Germination rate. Seedling growth.&list=OS06G0166100

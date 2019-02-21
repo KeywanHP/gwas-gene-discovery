@@ -89,7 +89,6 @@ def findCloseGene(chr_snp, bp_snp):
     f.close()
 #End of block3 to find the genes associated with snps.
 
-
 def findCloseGeneDesign(chr_snp, bp_snp):
     print(os.listdir("."))
     score_threshold = 1.0
@@ -166,17 +165,17 @@ def getgs():
             for line in gk:
                 col = line.split(" :: ")
                 genes.append(col[0])
-            genelist = (",").join(genes) #join all iterative elements by ,
-            print(genelist)
-            pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
-            #use str.join() to convert multiple elments in a list into one string.
-            keyw = "+OR+".join(pheno)
-            url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
-            print(url)
-            r = requests.get(url)
-            r.json()
-            r.status_code #check if request is successful.
-            print(r.text, file=af)
+                genelist = (",").join(genes) #join all iterative elements by ,
+                print(genelist)
+                pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
+                #use str.join() to convert multiple elments in a list into one string.
+                keyw = "+OR+".join(pheno)
+                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
+                print(url)
+                r = requests.get(url)
+                r.json()
+                r.status_code #check if request is successful.
+                print(r.text, file=af)
         af.close()
     gk.close()
     return
@@ -197,18 +196,27 @@ def parsejs():
 def gene_score():
     '''Extract the scores only.'''
     with open("genetable.txt", "r") as f:
+        next(f)
         with open("scores.txt", "w") as sf:
             for line in f:
                 col = line.split("\t")
-                score=str(col[6])
+                score=str(col[6]) 
                 genes=col[1]
-                print("{}\t{}".format(genes, score), file=sf)
+                pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
+                keyw = "+OR+".join(pheno)
+                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genes)
+                print("{}\t{}\t{}".format(genes, score, url), file=sf)
         sf.close()
     f.close()
+                
+
+
+    
+    
 
 if __name__ == "__main__":
     #0) display help message
-    helpmsg()
+    #helpmsg()
 
     #1) Truncate results file and order by snps.
     filter = "Results_filtered.txt"
@@ -267,5 +275,6 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
 
-print("The entire pipeline completed without errors")
+
+print("The entire pipeline completed.")
 print(datetime.datetime.now())

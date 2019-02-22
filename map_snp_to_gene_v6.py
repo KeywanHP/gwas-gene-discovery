@@ -4,21 +4,6 @@
 from __future__ import print_function
 import os, math, traceback, datetime, argparse, requests, json, glob
 
-def helpmsg():
-    p = argparse.ArgumentParser()
-    '''
-    p.add_argument("g", help = "a gwas output ending in .csv (preferably from gapit)", type=argparse.FileType("r"))
-    p.add_argument("a", help = "annotation file ending in .txt from a database", type=argparse.FileType("r"))
-    args = p.parse_args(glob.glob(".csv"), glob.glob(".txt"))
-    print(args.g)
-    print(args.a)
-    '''
-    parser.add_argument("--infile", type=argparse.FileType("r", encoding="UTF-8"), required=True)
-    args = parser.parse_args()
-    print(args)
-    args.infile.close()
-
-
 def resformat(filter):
     for file in os.listdir("."):
         if file.endswith(".Results.csv"):
@@ -88,7 +73,6 @@ def findCloseGene(chr_snp, bp_snp):
         return "FooBar"
     f.close()
 #End of block3 to find the genes associated with snps.
-
 
 def findCloseGeneDesign(chr_snp, bp_snp):
     print(os.listdir("."))
@@ -166,20 +150,26 @@ def getgs():
             for line in gk:
                 col = line.split(" :: ")
                 genes.append(col[0])
-            genelist = (",").join(genes) #join all iterative elements by ,
-            print(genelist)
-            pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
-            #use str.join() to convert multiple elments in a list into one string.
-            keyw = "+OR+".join(pheno)
-            url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
-            print(url)
-            r = requests.get(url)
-            r.json()
-            r.status_code #check if request is successful.
-            print(r.text, file=af)
+                genelist = (",").join(genes) #join all iterative elements by ,
+                print(genelist)
+                #pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
+                #use str.join() to convert multiple elments in a list into one string.
+                #keyw = "+OR+".join(pheno)
+                #url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
+                #print(url)
+                keyw = "coleoptile length mesocotyl length root length seminal root length Germination rate. Seedling growth."
+                parameters = {"keyword":keyw, "list":genelist}
+                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?"
+                #url only goes as far as the ? sign. The rest are parameters provided as dictionary.
+                r = requests.get(link, params=parameters)
+                print(r.url)
+                r.json()
+                r.status_code #check if request is successful.
+                print(r.text, file=af)
         af.close()
     gk.close()
     return
+#End of block 5 to search Knetminer
 
 def parsejs():
     ''' deserialise json into dictionary and extract the genetable which hopefully provide right genes and score given right url'''
@@ -192,23 +182,35 @@ def parsejs():
                     print(content[u'geneTable'], file=g) #r.json will put a u infront of the keys of json dictionary
                 g.close()
             jf.close()
-    return
+#End of block 6 to extract genetable
 
 def gene_score():
     '''Extract the scores only.'''
     with open("genetable.txt", "r") as f:
+        next(f)
         with open("scores.txt", "w") as sf:
             for line in f:
                 col = line.split("\t")
-                score=str(col[6])
+                score=str(col[6]) 
                 genes=col[1]
-                print("{}\t{}".format(genes, score), file=sf)
+                keyw = "coleoptile length mesocotyl length root length seminal root length Germination rate. Seedling growth."
+                parameters = {"keyword":keyw, "list":genes}
+                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?"
+                r=requests.get(link, parameters)
+                print("{}\t{}\t{}".format(genes, score, r.url), file=sf)
         sf.close()
     f.close()
+#End of block 7 to print genes, scores and url into scores.txt
+                
+
 
 if __name__ == "__main__":
-    #0) display help message
-    helpmsg()
+    '''
+    parser = argparse.ArgumentParser()
+    parser.add_argument("g", help="a gwas output (preferably gapit) in csv", type=argparse.FileType("r"))
+    parser.add_argument("a", help="annotation file in txt", type=argparse.FileType("r"))
+    parser.parse_args(input("State gwas output:" ), input("State annotation:" ))
+    '''
 
     #1) Truncate results file and order by snps.
     filter = "Results_filtered.txt"
@@ -267,5 +269,6 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
 
-print("The entire pipeline completed without errors")
+
+print("The entire pipeline completed.")
 print(datetime.datetime.now())

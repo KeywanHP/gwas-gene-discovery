@@ -2,7 +2,7 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, traceback, datetime, argparse, requests, json
+import os, math, traceback, datetime
 
 def resformat(filter):
     for file in os.listdir("."):
@@ -74,6 +74,7 @@ def findCloseGene(chr_snp, bp_snp):
     f.close()
 #End of block3 to find the genes associated with snps.
 
+
 def findCloseGeneDesign(chr_snp, bp_snp):
     print(os.listdir("."))
     score_threshold = 1.0
@@ -142,74 +143,9 @@ def getgdp(threshfile, gdp, genedesign):
     return
 #End of block4 to produce the summary.
 
-def getgs():
-    '''Open gene list and use them to search Knetminer along with keywords'''
-    with open("Results_formated_gene_and_designation.txt", "r") as gk:
-        with open("knetminer_api.json", "w") as af:
-            genes = []
-            for line in gk:
-                col = line.split(" :: ")
-                genes.append(col[0])
-                genelist = (",").join(genes) #join all iterative elements by ,
-                print(genelist)
-                pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
-                #use str.join() to convert multiple elments in a list into one string.
-                keyw = "+OR+".join(pheno)
-                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
-                print(url)
-                print(r.url)
-                r.json()
-                r.status_code #check if request is successful.
-                print(r.text, file=af)
-        af.close()
-    gk.close()
-    return
-#End of block 5 to search Knetminer
-
-def parsejs():
-    ''' deserialise json into dictionary and extract the genetable which hopefully provide right genes and score given right url'''
-    for file in os.listdir("."):
-        if file.endswith(".json"):
-            with open(file, "r") as jf:
-                content = json.load(jf) #deserialise content of json, which will be dictionary object.
-                #print(type(content))
-                with open("genetable.txt", "w") as g:
-                    print(content[u'geneTable'], file=g) #r.json will put a u infront of the keys of json dictionary
-                g.close()
-            jf.close()
-#End of block 6 to extract genetable
-
-def gene_score():
-    '''Extract the scores only.'''
-    with open("genetable.txt", "r") as f:
-        next(f)
-        with open("scores.txt", "w") as sf:
-            for line in f:
-                col = line.split("\t")
-                score=str(col[6]) 
-                genes=col[1]
-                pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
-                #use str.join() to convert multiple elments in a list into one string.
-                keyw = "+OR+".join(pheno)
-                parameters = {"keyword":keyw, "list":genes}
-                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genepage?"
-                r=requests.get(link, parameters)
-                print("{}\t{}\t{}".format(genes, score, r.url), file=sf)
-        sf.close()
-    f.close()
-#End of block 7 to print genes, scores and url into scores.txt
-                
-
-
-if __name__ == "__main__":
-    ''' positional arguments are: logP-value, Annotation file, gwas results. optional argument are distance from genes'''
-    parser = argparse.ArgumentParser(description="This script requires a gwas results file in csv and an annotation file in txt")
-    parser.add_argument("g", help="a gwas output (preferably gapit) in csv", type=argparse.FileType("r"))
-    parser.add_argument("a", help="annotation file in txt", type=argparse.FileType("r"))
-    
-
+if __name__=="__main__":
     #1) Truncate results file and order by snps.
-    filter = "Results_filtered.txt"
+    filter="Results_filtered.txt"
     print("taking inputs from gwas results")
     print("writing outputs to:{}".format(filter))      
     try:
@@ -219,7 +155,7 @@ if __name__ == "__main__":
         traceback.print_exc()
 
     #2) Obtain SNPs less than e-6 in p-value
-    threshfile = "Results_filtered_threshold.txt"
+    threshfile="Results_filtered_threshold.txt"
     print("reading from: {}".format(filter))
     print("extracting SNPS above threshold into: {}".format(threshfile))
     try:
@@ -230,12 +166,12 @@ if __name__ == "__main__":
 
     
     #3) define annotation file for findCloseGenes(genes) and findCloseGeneDesign(annotation)
-    annotation = "Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
+    annotation="Os_Nipponbare_IRGSP_1_gene_Loci_and_designation.txt"
 
     
     #4) Obtain a file summarising the information.
-    gdp = "Results_filtered_gdp_FINAL.txt"
-    genedesign = "Results_formated_gene_and_designation.txt"
+    gdp="Results_filtered_gdp_FINAL.txt"
+    genedesign="Results_formated_gene_and_designation.txt"
     print("producing summary of genes associated with significant SNPs")
     print("producing a file of genes associated with significant SNPs and annotations")
     try:
@@ -244,27 +180,5 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
 
-    #5) Download json api from Knetminer
-    try:
-        getgs()
-        print("Obtaining api from knetminer")
-    except Exception:
-        traceback.print_exc()
-    
-    #6) Extract gene table from Knetminer
-    try:
-        parsejs()
-        print("Extracting genetable from api with scores")
-    except Exception:
-        traceback.print_exc()
-    
-    #7)extract only genes + scores
-    try:
-        gene_score()
-        print("Extracting genes and score from Knetminer")
-    except Exception:
-        traceback.print_exc()
-
-
-print("The entire pipeline completed.")
+print("The entire pipeline completed without errors")
 print(datetime.datetime.now())

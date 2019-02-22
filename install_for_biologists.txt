@@ -1,0 +1,14 @@
+
+virtualenv-2.7 py27virtual
+export PYTHONPATH="/home/apps/python/lib64/python2.7/site-manager/"
+source py27virtual/bin/activate
+
+pip install traceback
+pip install requests
+pip install datetime
+pip install argparse
+pip install json
+
+#COMMENT: To exit python 2.7 virtual environment:
+
+deactivate

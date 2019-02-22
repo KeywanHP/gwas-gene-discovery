@@ -2,7 +2,7 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback, datetime, argparse, requests, json, glob
+import os, traceback, datetime, argparse, requests, json
 
 def resformat(filter):
     for file in os.listdir("."):
@@ -152,16 +152,11 @@ def getgs():
                 genes.append(col[0])
                 genelist = (",").join(genes) #join all iterative elements by ,
                 print(genelist)
-                #pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
+                pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
                 #use str.join() to convert multiple elments in a list into one string.
-                #keyw = "+OR+".join(pheno)
-                #url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
-                #print(url)
-                keyw = "coleoptile length mesocotyl length root length seminal root length Germination rate. Seedling growth."
-                parameters = {"keyword":keyw, "list":genelist}
-                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?"
-                #url only goes as far as the ? sign. The rest are parameters provided as dictionary.
-                r = requests.get(link, params=parameters)
+                keyw = "+OR+".join(pheno)
+                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
+                print(url)
                 print(r.url)
                 r.json()
                 r.status_code #check if request is successful.
@@ -205,12 +200,12 @@ def gene_score():
 
 
 if __name__ == "__main__":
-    '''
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="This script requires a gwas results file in csv and an annotation file in txt")
     parser.add_argument("g", help="a gwas output (preferably gapit) in csv", type=argparse.FileType("r"))
     parser.add_argument("a", help="annotation file in txt", type=argparse.FileType("r"))
-    parser.parse_args(input("State gwas output:" ), input("State annotation:" ))
-    '''
+    parser.parse_args([GAPIT.MLM.DTF.GWAS.Results.csv, Os_Nipponbare_IRGSP_1_gene_Loci_and_designatio.txt])
+    print(args.g)
+    
 
     #1) Truncate results file and order by snps.
     filter = "Results_filtered.txt"

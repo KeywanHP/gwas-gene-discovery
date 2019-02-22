@@ -256,5 +256,5 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
 
-print("The entire pipeline completed without errors")
+print("The entire pipeline completed without")
 print(datetime.datetime.now())

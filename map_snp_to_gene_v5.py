@@ -188,12 +188,14 @@ def gene_score():
                 col = line.split("\t")
                 score=str(col[6]) 
                 genes=col[1]
-                pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
-                keyw = "+OR+".join(pheno)
-                url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genes)
-                print("{}\t{}\t{}".format(genes, score, url), file=sf)
+                keyw = "coleoptile length mesocotyl length root length seminal root length Germination rate. Seedling growth."
+                parameters = {"keyword":keyw, "list":genes}
+                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?"
+                r=requests.get(link, parameters)
+                print("{}\t{}\t{}".format(genes, score, r.url), file=sf)
         sf.close()
     f.close()
+#End of block 7 to print genes, scores and url into scores.txt
 
 if __name__ == "__main__":
 

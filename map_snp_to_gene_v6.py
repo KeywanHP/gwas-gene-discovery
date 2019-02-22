@@ -188,9 +188,11 @@ def gene_score():
                 col = line.split("\t")
                 score=str(col[6]) 
                 genes=col[1]
-                keyw = "coleoptile length mesocotyl length root length seminal root length Germination rate. Seedling growth."
+                pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
+                #use str.join() to convert multiple elments in a list into one string.
+                keyw = "+OR+".join(pheno)
                 parameters = {"keyword":keyw, "list":genes}
-                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?"
+                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genepage?"
                 r=requests.get(link, parameters)
                 print("{}\t{}\t{}".format(genes, score, r.url), file=sf)
         sf.close()
@@ -200,11 +202,10 @@ def gene_score():
 
 
 if __name__ == "__main__":
+    ''' positional arguments are: logP-value, Annotation file, gwas results. optional argument are distance from genes'''
     parser = argparse.ArgumentParser(description="This script requires a gwas results file in csv and an annotation file in txt")
     parser.add_argument("g", help="a gwas output (preferably gapit) in csv", type=argparse.FileType("r"))
     parser.add_argument("a", help="annotation file in txt", type=argparse.FileType("r"))
-    parser.parse_args([GAPIT.MLM.DTF.GWAS.Results.csv, Os_Nipponbare_IRGSP_1_gene_Loci_and_designatio.txt])
-    print(args.g)
     
 
     #1) Truncate results file and order by snps.

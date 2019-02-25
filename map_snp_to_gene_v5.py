@@ -2,7 +2,7 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, traceback, datetime, requests, json
+import os, math, traceback, datetime, requests, json
 
 def resformat(filter):
     for file in os.listdir("."):
@@ -143,10 +143,10 @@ def getgdp(threshfile, gdp, genedesign):
     return
 #End of block4 to produce the summary.
 
-def getgs():
+def getgs(genedesign, json):
     '''Open gene list and use them to search Knetminer along with keywords'''
-    with open("Results_formated_gene_and_designation.txt", "r") as gk:
-        with open("knetminer_api.json", "w") as af:
+    with open(genedesign, "r") as gk:
+        with open(json, "w") as af:
             genes = []
             for line in gk:
                 col = line.split(" :: ")
@@ -166,24 +166,22 @@ def getgs():
     gk.close()
     return
 
-def parsejs():
+def parsejs(json,genetable):
     ''' deserialise json into dictionary and extract the genetable which hopefully provide right genes and score given right url'''
-    for file in os.listdir("."):
-        if file.endswith(".json"):
-            with open(file, "r") as jf:
-                content = json.load(jf) #deserialise content of json, which will be dictionary object.
-                #print(type(content))
-                with open("genetable.txt", "w") as g:
-                    print(content[u'geneTable'], file=g) #r.json will put a u infront of the keys of json dictionary
-                g.close()
-            jf.close()
+    with open(json, "r") as jf:
+        content = json.load(jf) #deserialise content of json, which will be dictionary object.
+        #print(type(content))
+        with open(genetable, "w") as g:
+            print(content[u'geneTable'], file=g) #r.json will put a u infront of the keys of json dictionary
+        g.close()
+    jf.close()
     return
 
-def gene_score():
+def gene_score(genetable, scores):
     '''Extract the scores only.'''
-    with open("genetable.txt", "r") as f:
+    with open(genetable, "r") as f:
         next(f)
-        with open("scores.txt", "w") as sf:
+        with open(scores, "w") as sf:
             for line in f:
                 col = line.split("\t")
                 score=str(col[6]) 
@@ -228,7 +226,7 @@ if __name__ == "__main__":
     
     #4) Obtain a file summarising the information.
     gdp = "Results_filtered_gdp_FINAL.txt"
-    genedesign = "Results_formated_gene_and_designation.txt"
+    genedesign = "Results_filtered_gene_and_designation.txt"
     print("producing summary of genes associated with significant SNPs")
     print("producing a file of genes associated with significant SNPs and annotations")
     try:
@@ -238,22 +236,28 @@ if __name__ == "__main__":
         traceback.print_exc()
 
     #5) Download json api from Knetminer
+    genedesign = "Results_filtered_gene_and_designation.txt"
+    json = "knetminer_api.json"
     try:
-        getgs()
+        getgs(genedesign, json)
         print("Obtaining api from knetminer")
     except Exception:
         traceback.print_exc()
     
     #6) Extract gene table from Knetminer
+    json = "knetminer_api.json"
+    genetable="genetable.txt"
     try:
-        parsejs()
+        parsejs(json,genetable)
         print("Extracting genetable from api with scores")
     except Exception:
         traceback.print_exc()
 
     #7) Compare genetable with genetable and extract only genes + scores
+    genetable="genetable.txt"
+    scores="scores.txt"
     try:
-        gene_score()
+        gene_score(genetable, scores)
         print("Extracting genes and score from Knetminer")
     except Exception:
         traceback.print_exc()

@@ -2,33 +2,31 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback, datetime, requests, json
+import os, math, traceback, datetime, requests, json, argparse
 
 def resformat(filter):
-    for file in os.listdir("."):
-        if file.endswith(".Results.csv"):
-            with open(file) as fres:
-                next(fres)
-                with open(filter, "w") as flt:
-                    snp = 0
-                    print("{}\t{}\t{}\t{}\t{}".format("SNPnum","CHR","snpBP","P","logP"), file=flt)
-                    for line in fres:
-                        snp += 1
-                        col = line.split(",")
-                        chro = col[1]
-                        bp = col[2]
-                        pval = float(col[3])
-                        logP = -math.log10(pval)
-                        print('{}\t{}\t{}\t{}\t{}'.format(snp,chro,bp,pval,logP), file=flt)
-                flt.close()
-            fres.close()
+    with open(args.F, "r") as fres:
+        next(fres)
+        with open(filter, "w") as flt:
+            snp = 0
+            print("{}\t{}\t{}\t{}\t{}".format("SNPnum","CHR","snpBP","P","logP"), file=flt)
+            for line in fres:
+                snp += 1
+                col = line.split(",")
+                chro = col[1]
+                bp = col[2]
+                pval = float(col[3])
+                logP = -math.log10(pval)
+                print('{}\t{}\t{}\t{}\t{}'.format(snp,chro,bp,pval,logP), file=flt)
+        flt.close()
+    fres.close()
     return
 #End of block1
 
 def getsnps(filter, threshfile):
     with open(filter) as flt:
         next(flt)
-        logP_threshold = 6
+        logP_threshold = args.P
         with open(threshfile, "w") as fthresh:
             print("SNPnum\tCHR\tsnpBP\tP\tlogP", file=fthresh)
             for line in flt:
@@ -113,7 +111,7 @@ def getgdp(threshfile, gdp, genedesign):
             highlight = []
             highlightdesign = []
             for line in fthresh:
-                logP_threshold = 6
+                logP_threshold = args.P
                 col = line.split("\t")
                 snp = col[0]
                 snpnum = col[0]
@@ -198,6 +196,11 @@ def gene_score(genetable, scores):
 #End of block 7 to print genes, scores and url into scores.txt
 
 if __name__ == "__main__":
+    #0) Display the parameters needed to run the script.
+    parser = argparse.ArgumentParser(description="This script needs input files of a gwas result (preferably from gapit) with .csv extension and annotation file with .txt extension. logP threshold for filtering snps is adjustable.")
+    parser.add_argument("-f", help="The name of gwas results file with .csv extension.")
+    parser.add_argument("-p", help="a chosen logP threshold for filtering snps as integer", type=int)
+    args = parser.parse_args()
 
     #1) Truncate results file and order by snps.
     filter = "Results_filtered.txt"

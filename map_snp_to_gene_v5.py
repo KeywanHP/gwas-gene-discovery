@@ -143,10 +143,10 @@ def getgdp(threshfile, gdp, genedesign):
     return
 #End of block4 to produce the summary.
 
-def getgs(genedesign, json):
+def getgs(genedesign):
     '''Open gene list and use them to search Knetminer along with keywords'''
     with open(genedesign, "r") as gk:
-        with open(json, "w") as af:
+        with open("genome.json", "w") as af:
             genes = []
             for line in gk:
                 col = line.split(" :: ")
@@ -156,7 +156,7 @@ def getgs(genedesign, json):
             pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
             #use str.join() to convert multiple elments in a list into one string.
             keyw = "+OR+".join(pheno)
-            url = "http://babvs67.rothamsted.ac.uk:8081/ws/rice/genome?keyword={}&list={}".format(keyw, genelist)
+            url = "http://knetminer.rothamsted.ac.uk/riceknet/genome?keyword={}&list={}".format(keyw, genelist)
             print(url)
             r = requests.get(url)
             r.json()
@@ -166,9 +166,9 @@ def getgs(genedesign, json):
     gk.close()
     return
 
-def parsejs(json,genetable):
+def parsejs(genetable):
     ''' deserialise json into dictionary and extract the genetable which hopefully provide right genes and score given right url'''
-    with open(json, "r") as jf:
+    with open("genome.json", "r") as jf:
         content = json.load(jf) #deserialise content of json, which will be dictionary object.
         #print(type(content))
         with open(genetable, "w") as g:
@@ -190,7 +190,7 @@ def gene_score(genetable, scores):
                 #use str.join() to convert multiple elments in a list into one string.
                 keyw = "+OR+".join(pheno)
                 parameters = {"keyword":keyw, "list":genes}
-                link="http://babvs67.rothamsted.ac.uk:8081/ws/rice/genepage?"
+                link="http://knetminer.rothamsted.ac.uk/riceknet/genepage?"
                 r=requests.get(link, params=parameters)
                 print("{}\t{}\t{}".format(genes, score, r.url), file=sf)
         sf.close()
@@ -237,18 +237,16 @@ if __name__ == "__main__":
 
     #5) Download json api from Knetminer
     genedesign = "Results_filtered_gene_and_designation.txt"
-    json = "knetminer_api.json"
     try:
-        getgs(genedesign, json)
+        getgs(genedesign)
         print("Obtaining api from knetminer")
     except Exception:
         traceback.print_exc()
     
     #6) Extract gene table from Knetminer
-    json = "knetminer_api.json"
     genetable="genetable.txt"
     try:
-        parsejs(json,genetable)
+        parsejs(genetable)
         print("Extracting genetable from api with scores")
     except Exception:
         traceback.print_exc()
@@ -262,5 +260,5 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
 
-print("The entire pipeline completed without")
+print("The entire pipeline completed")
 print(datetime.datetime.now())

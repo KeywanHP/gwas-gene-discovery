@@ -2,7 +2,7 @@
 
 #bring python3 print() into python2
 from __future__ import print_function
-import os, math, traceback, datetime, requests, json
+import os, math, traceback, datetime, urllib, requests, json
 
 def resformat(filter):
     for file in os.listdir("."):
@@ -155,7 +155,7 @@ def getgs(genedesign):
             print(genelist)
             pheno = ["coleoptile length", "mesocotyl length", "root length", "seminal root length", "Germination rate. Seedling growth."]
             #use str.join() to convert multiple elments in a list into one string.
-            keyw = "+OR+".join(pheno)
+            keyw = "%20OR%20".join(pheno)
             url = "http://knetminer.rothamsted.ac.uk/riceknet/genome?keyword={}&list={}".format(keyw, genelist)
             print(url)
             r = requests.get(url)
@@ -187,8 +187,7 @@ def gene_score(genetable, scores):
                 score=str(col[6]) 
                 genes=col[1]
                 pheno = ['coleoptile length','mesocotyl length','root length','seminal root length','Germination rate. Seedling growth.']
-                #use str.join() to convert multiple elments in a list into one string.
-                keyw = "+OR+".join(pheno)
+                keyw = "%20OR%20".join(pheno)
                 parameters = {"keyword":keyw, "list":genes}
                 link="http://knetminer.rothamsted.ac.uk/riceknet/genepage?"
                 r=requests.get(link, params=parameters)

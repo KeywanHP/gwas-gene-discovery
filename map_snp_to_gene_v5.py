@@ -183,6 +183,8 @@ def gene_score(genetable, scores):
         next(f)
         with open(scores, "w") as sf:
             for line in f:
+                if line == "\n":
+                    continue
                 col = line.split("\t")
                 score=str(col[6]) 
                 genes=col[1]
